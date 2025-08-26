@@ -1,0 +1,16 @@
+{
+  "name": "John Doe",
+  "age": 30,
+  "isStudent": false,
+  "courses": [
+    {
+      "title": "History 101",
+      "credits": 3
+    },
+    {
+      "title": "Math 202",
+      "credits": 4
+    }
+  ],
+  "address": null
+}

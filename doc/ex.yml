@@ -1,0 +1,35 @@
+
+name: standard
+stages:
+  - name: BRG
+    desc: Business Requirements Group
+    inputs:
+      - START
+    outputs:
+      - BR_doc
+  - name: FDG
+    desc: Functional Design Group
+    inputs:
+      - BR_doc
+    outputs:
+      - FD_doc
+  - name: TPG
+    desc: Test Planning Group
+    inputs:
+      - FD_doc
+    outputs:
+      - TestPlan
+      - TestConds
+      - TestCases
+  - name: TDG
+    desc: Test Design Group
+    inputs: 
+      - FD_doc
+    outputs:
+      - TD_doc
+  - name: NPG
+    desc: New Project Group
+      
+    inputs:
+      - FD_doc
+        
