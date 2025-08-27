@@ -3,21 +3,18 @@ name: standard
 stages:
   - name: BRG
     desc: Business Requirements Group
-    perform: $sendmail
     inputs:
       - START
     outputs:
       - BR_doc
   - name: FDG
     desc: Functional Design Group
-    perform: $sendmail
     inputs:
       - BR_doc
     outputs:
       - FD_doc
   - name: TPG
     desc: Test Planning Group
-    perform: $sendmail
     inputs:
       - FD_doc
     outputs:
@@ -26,28 +23,24 @@ stages:
       - TestCases
   - name: TDG
     desc: Test Design Group
-    perform: ~sendmail
     inputs: 
       - FD_doc
     outputs:
       - TD_doc
   - name: NPG
     desc: New Project Group
-    perform: $NPG_details
     inputs:
       - FD_doc
     outputs:
       - Changes_doc
   - name: ACG
     desc: Add Changes Group
-    perform: $AC_details
     inputs:
       - Changes_doc
     outputs:
       - ^changes_added
   - name: Build
     desc: Hourly Build of Software
-    perform: ~null
     inputs:
       - ^^build_started # external event
     outputs:
