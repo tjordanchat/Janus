@@ -37,4 +37,17 @@ stages:
     inputs:
       - FD_doc
     outputs:
-      - 
+      - Changes_doc
+  - name: ACG
+    desc: Add Changes Group
+    perform: $AC_details
+    inputs:
+      - Changes_doc
+    outputs:
+      - ^changes_added
+  - name: Build
+    desc: Hourly Build of Software
+    perform: ~build
+    inputs:
+      - +"5 * 0 * *"
+
