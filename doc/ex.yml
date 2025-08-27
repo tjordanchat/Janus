@@ -26,14 +26,14 @@ stages:
       - TestCases
   - name: TDG
     desc: Test Design Group
-    perform: $sendmail
+    perform: ~sendmail
     inputs: 
       - FD_doc
     outputs:
       - TD_doc
   - name: NPG
     desc: New Project Group
-    perform: NPG_details
+    perform: $NPG_details
     inputs:
       - FD_doc
     outputs:
