@@ -47,10 +47,9 @@ stages:
       - ^changes_added
   - name: Build
     desc: Hourly Build of Software
-    perform: ~build
+    perform: ~null
     inputs:
-      - +"5 * * * *"
-      - ^change_added
+      - ^^build_started # external event
     outputs:
       - Exacutable_pkg
 
