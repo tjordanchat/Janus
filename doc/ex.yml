@@ -49,5 +49,9 @@ stages:
     desc: Hourly Build of Software
     perform: ~build
     inputs:
-      - +"5 * 0 * *"
+      - +"5 * * * *"
+      - ^change_added
+    outputs:
+      - Exacutable_pkg
+
 
