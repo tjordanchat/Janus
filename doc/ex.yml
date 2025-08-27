@@ -3,10 +3,8 @@ name: standard
 stages:
   - name: BRG
     desc: Business Requirements Group
-    inputs:
-      - ^start
     inputs: 
-      - ^^start
+      - ^^start ^start
     outputs:
       - BR_doc
   - name: FDG
