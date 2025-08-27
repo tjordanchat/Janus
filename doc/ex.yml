@@ -4,7 +4,8 @@ stages:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
-      - ^^start ^start
+      - ^^start ^^visa # Both required
+      - ^start # Or this one
     outputs:
       - BR_doc
   - name: FDG
