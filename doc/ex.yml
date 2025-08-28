@@ -4,8 +4,7 @@ stages:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
-      - ^^start ^^visa # AND relationship
-      - ^start # OR this one
+      - ^^create_formal_requiremens_doc
     outputs:
       - BR_doc
   - name: FDG
@@ -39,7 +38,7 @@ stages:
     inputs:
       - Changes_doc
     outputs:
-      - ^changes_added
+      - ^^changes_added
   - name: Build
     desc: Hourly Build of Software
     inputs:
