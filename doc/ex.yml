@@ -39,7 +39,7 @@ stages:
       - Changes_doc
     outputs:
       - ^^changes_added
-  - name: Build
+  - name: Building
     desc: Hourly Build of Software
     inputs:
       - ^^build_started # external event
