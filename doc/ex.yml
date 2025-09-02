@@ -4,7 +4,9 @@ stages:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
-      - ^^create_formal_requiremens_doc
+      - +OR 
+        - ^^create_formal_requiremens_doc
+        - ^^create_requiremens_doc
     outputs:
       - BR_doc
   - name: FDG
@@ -38,12 +40,12 @@ stages:
     inputs:
       - Changes_doc
     outputs:
-      - changes_added
+      - ^^changes_added
   - name: Building
     desc: Hourly Build of Software
     inputs:
       - ^^build_started # external event
     outputs:
-      - Exacutable_pkg
+      - ^^exacutable_pkg
 
 
