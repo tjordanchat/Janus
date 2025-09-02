@@ -1,6 +1,6 @@
 
 name: standard
-stages:
+groups:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
