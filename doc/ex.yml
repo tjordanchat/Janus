@@ -4,7 +4,7 @@ stages:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
-      - +OR 
+      - OR: 
         - ^^create_formal_requiremens_doc
         - ^^create_requiremens_doc
     outputs:
