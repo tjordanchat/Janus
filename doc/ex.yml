@@ -4,9 +4,8 @@ groups:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
-      - OR: 
-        - ^^create_formal_requiremens_doc
-        - ^^create_requiremens_doc
+      - ~~create_formal_requiremens_doc
+      - ^^create_requiremens_doc
     outputs:
       - BR_doc
   - name: FDG
@@ -15,6 +14,7 @@ groups:
       - BR_doc
     outputs:
       - FD_doc
+      - "? .BRD.members[].vote > ( .BRD.member_size / 2 )" : BRD_extra
   - name: TPG
     desc: Test Planning Group
     inputs:
