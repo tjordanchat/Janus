@@ -4,7 +4,6 @@ groups:
   - name: BRG
     desc: Business Requirements Group
     inputs: 
-      - ~~create_formal_requiremens_doc
       - ^^create_requiremens_doc
     outputs:
       - BR_doc
@@ -14,7 +13,6 @@ groups:
       - BR_doc
     outputs:
       - FD_doc
-      - "? .BRD.members[].vote > ( .BRD.member_size / 2 )" : BRD_extra
   - name: TPG
     desc: Test Planning Group
     inputs:
@@ -44,8 +42,15 @@ groups:
   - name: Building
     desc: Hourly Build of Software
     inputs:
-      - ^^build_started # external event
+        ^^build_started # external event
     outputs:
       - ^^exacutable_pkg
+    perform: -|
+    .profiles.auto_scaler[]
+    | .dns_name as $name
+    | .auto_scaler_group_options
+    | select( any(.[":tags"][];
+    (.[":key"] | index("fonzi")) and (.[":value"] == "true")) )
+    | $name
 
 
