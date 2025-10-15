@@ -2,7 +2,10 @@
 
 system:
   - proc: BEGIN
-    subp: BGR
+    output: 
+      - ((BGR))
+      
+    group: Executive
     
   - proc: BRG
     desc: Business Requirements Group
