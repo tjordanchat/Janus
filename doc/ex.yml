@@ -1,64 +1,60 @@
 ---
 
 system:
-  - proc: BEGIN
+  - proc: Executive
     output: 
-      - ((BGR))
-      
-    group: Executive
+      - Init_Formal_Req
     
-  - proc: BRG
+  - proc: BRG 
     desc: Business Requirements Group
-    outputs: 
-      - BR_doc
+    input: Init_Formal_Req
+    output: 
+      - BRD
 
   - proc: FDG
     desc: Functional Design Group
-    inputs:
-      - BR_doc
-    outputs:
-      - FD_doc
+    input:
+      - BRD
+    output:
+      - FDD
 
   - proc: TPG
     desc: Test Planning Group
-    inputs:
-      - FD_doc
-    outputs:
+    input:
+      - FDD
+    output:
       - TestPlan
-      - TestConds
-      - TestCases
+      - TestCond
+      - TestCase
 
   - proc: TDG
     desc: Test Design Group
-    inputs: 
+    input: 
       - TestPlan
-      - TestConds
-      - TestCases
-    outputs:
-      - TD_doc
+      - TestCond
+      - TestCase
+    spawn:
+      - EachTestCond
+      - EachTestCase
 
   - proc: NPG
     desc: New Project Group
-    inputs:
+    input:
       - TestPlan
       - TestConds
       - TestCases
-    outputs:
+    output:
       - Changes_doc
 
   - proc: ACG
     desc: Add Changes Group
-    inputs:
+    input:
       - Changes_doc
-    subp:
-      -
+    spawn:
+      - EachFeature
 
-  - proc: Building
+  - proc: EachFeature
     desc: Hourly Build of Software
-    inputs:
-        ^^build_started # external event
-
-    outputs:
-      - ^^exacutable_pkg
-
+    input:
+    output:
 
