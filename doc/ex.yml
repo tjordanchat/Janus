@@ -1,19 +1,22 @@
+---
 
-name: standard
-groups:
-  - name: BRG
+system:
+  - proc: BEGIN
+    subp: BGR
+    
+  - proc: BRG
     desc: Business Requirements Group
-    inputs: 
-      - ^^create_requiremens_doc
-    outputs:
+    outputs: 
       - BR_doc
-  - name: FDG
+
+  - proc: FDG
     desc: Functional Design Group
     inputs:
       - BR_doc
     outputs:
       - FD_doc
-  - name: TPG
+
+  - proc: TPG
     desc: Test Planning Group
     inputs:
       - FD_doc
@@ -21,36 +24,38 @@ groups:
       - TestPlan
       - TestConds
       - TestCases
-  - name: TDG
+
+  - proc: TDG
     desc: Test Design Group
     inputs: 
-      - FD_doc
+      - TestPlan
+      - TestConds
+      - TestCases
     outputs:
       - TD_doc
-  - name: NPG
+
+  - proc: NPG
     desc: New Project Group
     inputs:
-      - FD_doc
+      - TestPlan
+      - TestConds
+      - TestCases
     outputs:
       - Changes_doc
-  - name: ACG
+
+  - proc: ACG
     desc: Add Changes Group
     inputs:
       - Changes_doc
-    outputs:
-      - ^^changes_added
-  - name: Building
+    subp:
+      -
+
+  - proc: Building
     desc: Hourly Build of Software
     inputs:
         ^^build_started # external event
+
     outputs:
       - ^^exacutable_pkg
-    perform: -|
-    .profiles.auto_scaler[]
-    | .dns_name as $name
-    | .auto_scaler_group_options
-    | select( any(.[":tags"][];
-    (.[":key"] | index("fonzi")) and (.[":value"] == "true")) )
-    | $name
 
 
