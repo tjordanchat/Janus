@@ -1,63 +1,43 @@
 ---
 
-
 system:
-  - func: Executive
-    output: 
-      - Init_Formal_Req
+  - output: Executive
     
-  - func: BRG 
-    desc: Business Requirements Group
-    input: Init_Formal_Req
-    exec: |
+  - output: BRD 
+    desc: Business Requirements output
+    input: Executive
 
-    output: 
-      - BRD
-
-  - func: FDG
+  - output: FDG
     desc: Functional Design Group
     input:
       - BRD
-    output:
-      - FDD
 
-  - func: TPG
+  - output: TPG
     desc: Test Planning Group
     input:
       - FDD
-    output:
-      - TestPlan
-      - TestCond
-      - TestCase
 
-  - func: TDG
+  - output: TDG
     desc: Test Design Group
     input: 
       - TestPlan
       - TestCond
       - TestCase
-    output:
-      - EachTestCond
-      - EachTestCase
 
-  - func: NPG
+  - output: NPG
     desc: New Project Group
     input:
       - TestPlan
       - TestConds
       - TestCases
-    output:
-      - Changes_doc
 
-  - func: ACG
+  - output: ACG
     desc: Add Changes Group
     input:
-      - Changes_doc
-    output:
+      - Changes_output
+    output++:
       - EachFeature
 
-  - func: Add_Feature
+  - output: EachFeature
     desc: Hourly Build of Software
-    input: EachFeature
-    output:
 
