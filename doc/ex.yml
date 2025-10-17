@@ -1,43 +1,43 @@
 ---
 
 system:
-  - output: Executive
+  - document: Executive
     
-  - output: BRD 
-    desc: Business Requirements output
+  - document: BRD 
+    desc: Business Requirements document
     input: Executive
 
-  - output: FDG
+  - document: FDG
     desc: Functional Design Group
     input:
       - BRD
 
-  - output: TPG
+  - document: TPG
     desc: Test Planning Group
     input:
       - FDD
 
-  - output: TDG
+  - document: TDG
     desc: Test Design Group
     input: 
       - TestPlan
       - TestCond
       - TestCase
 
-  - output: NPG
+  - document: NPG
     desc: New Project Group
     input:
       - TestPlan
       - TestConds
       - TestCases
 
-  - output: ACG
+  - document: ACG
     desc: Add Changes Group
     input:
-      - Changes_output
-    output++:
+      - Changes_document
+    document++:
       - EachFeature
 
-  - output: EachFeature
+  - document: EachFeature
     desc: Hourly Build of Software
 
