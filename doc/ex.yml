@@ -1,24 +1,27 @@
 ---
 
+
 system:
-  - proc: Executive
+  - func: Executive
     output: 
       - Init_Formal_Req
     
-  - proc: BRG 
+  - func: BRG 
     desc: Business Requirements Group
     input: Init_Formal_Req
+    exec: |
+
     output: 
       - BRD
 
-  - proc: FDG
+  - func: FDG
     desc: Functional Design Group
     input:
       - BRD
     output:
       - FDD
 
-  - proc: TPG
+  - func: TPG
     desc: Test Planning Group
     input:
       - FDD
@@ -27,17 +30,17 @@ system:
       - TestCond
       - TestCase
 
-  - proc: TDG
+  - func: TDG
     desc: Test Design Group
     input: 
       - TestPlan
       - TestCond
       - TestCase
-    spawn:
+    output:
       - EachTestCond
       - EachTestCase
 
-  - proc: NPG
+  - func: NPG
     desc: New Project Group
     input:
       - TestPlan
@@ -46,15 +49,15 @@ system:
     output:
       - Changes_doc
 
-  - proc: ACG
+  - func: ACG
     desc: Add Changes Group
     input:
       - Changes_doc
-    spawn:
+    output:
       - EachFeature
 
-  - proc: EachFeature
+  - func: Add_Feature
     desc: Hourly Build of Software
-    input:
+    input: EachFeature
     output:
 
