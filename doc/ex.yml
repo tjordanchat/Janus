@@ -7,36 +7,33 @@ system:
     desc: Business Requirements document
     input: Executive
 
-  - document: FDG
-    desc: Functional Design Group
+  - document: FDD
+    desc: Functional Design Document
     input:
       - BRD
 
-  - document: TPG
-    desc: Test Planning Group
+  - document: TP
+    desc: Test Plan
     input:
       - FDD
 
-  - document: TDG
-    desc: Test Design Group
+  - document: TDD
+    desc: Test Design Document
     input: 
-      - TestPlan
+      - TP
       - TestCond
       - TestCase
 
-  - document: NPG
-    desc: New Project Group
-    input:
-      - TestPlan
-      - TestConds
-      - TestCases
+  - document: TestPlan
 
-  - document: ACG
-    desc: Add Changes Group
+  - document: TestConds
+
+  - document: TestCases
+
+  - document++: EachFeature
+    desc: Add Each Feature
     input:
-      - Changes_document
-    document++:
-      - EachFeature
+      - FDD
 
   - document: EachFeature
     desc: Hourly Build of Software
