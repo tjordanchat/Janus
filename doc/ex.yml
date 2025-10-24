@@ -5,21 +5,21 @@ system:
     
   - document: BRD 
     desc: Business Requirements document
-    input: Executive
+    prereq: Executive
 
   - document: FDD
     desc: Functional Design Document
-    input:
+    prereq:
       - BRD
 
   - document: TP
     desc: Test Plan
-    input:
+    prereq:
       - FDD
 
   - document: TDD
     desc: Test Design Document
-    input: 
+    prereq: 
       - TP
       - TestCond
       - TestCase
@@ -32,8 +32,10 @@ system:
 
   - document++: EachFeature
     desc: Add Each Feature
-    input:
+    prereq:
       - FDD
+    content: 
+      - title: The Great Gatsby
 
   - document: EachFeature
     desc: Hourly Build of Software
