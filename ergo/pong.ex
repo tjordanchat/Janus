@@ -1,7 +1,11 @@
 # Process A
-pid = spawn(fn ->
+
+
+pid_iDoc_TDD = spawn(fn ->
   receive do
-    {:ping, caller} -> send(caller, :pong)
+    {:Doc_BRD, caller} -> send(caller, :pong)
+    {:Doc_TRD, caller} -> send(caller, :pong)
+    {:Doc_FDD, caller} -> send(caller, :pong)
   end
 end)
 
