@@ -46,8 +46,8 @@ end
 # send(pid, {:get, :key, self()})
 # flush() # Use flush() in IEx to display messages in the shell's mailbox
 
-
-# priv/repo/seeds.exs
+#############################################################
+# PRIV/REPO/SEEDS.EXS
 alias MyApp.Districts.District
 alias MyApp.Repo
 
