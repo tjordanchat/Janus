@@ -47,3 +47,33 @@ end
 # flush() # Use flush() in IEx to display messages in the shell's mailbox
 
 
+# priv/repo/seeds.exs
+alias MyApp.Districts.District
+alias MyApp.Repo
+
+# 1. Define the path to your JSON file
+json_path = Path.join(:code.priv_dir(:my_app), "static/json/district_list.json")
+
+# 2. Read the file content
+case File.read(json_path) do
+  {:ok, content} ->
+    # 3. Decode the JSON content into an Elixir data structure
+    with {:ok, data} <- Poison.decode(content) do
+      # 4. Loop through the data and insert into the database
+      Enum.each(data, fn item_attrs ->
+        # Create a changeset and insert using Ecto
+        changeset = District.changeset(%District{}, item_attrs)
+
+        case Repo.insert(changeset) do
+          {:ok, district} ->
+            IO.puts("Inserted district: #{district.name}")
+          {:error, reason} ->
+            IO.puts("Failed to insert district: #{item_attrs["name"]} - #{inspect reason}")
+        end
+      end)
+    end
+
+  {:error, reason} ->
+    IO.puts("Error reading file: #{inspect reason}")
+end
+
