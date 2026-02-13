@@ -33,7 +33,7 @@ defmodule KV do
         new_map = Map.put(map, key, value)
         loop(new_map) # Recursively call loop with the updated state
 
-      _ ->
+      ->
         IO.puts("Received unknown message")
         loop(map)
     end
@@ -76,4 +76,18 @@ case File.read(json_path) do
   {:error, reason} ->
     IO.puts("Error reading file: #{inspect reason}")
 end
+
+
+# Example usage:
+quoted = quote do
+  defmodule Hello do
+    def world, do: :yes
+  end
+end
+
+[{module, binary}] = Code.compile_quoted(quoted)
+# To use it:
+:code.load_binary(module, 'nofile', binary)
+Hello.world() # :yes
+
 
