@@ -13,5 +13,8 @@ defmodule MR do
     ]
 
   defp d_BRD do
+    recieve do
+    end
+
   end
 end
