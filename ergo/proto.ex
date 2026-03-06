@@ -2,8 +2,7 @@
 
 defmodule MR do
 
-  defp stages do 
-    [
+  @stages [
       { :d_BRD -> spawn(d_BRD) },
       { :d_TPLAN -> spawn(d_TPLAN) },
       { :d_TCASE -> spawn(d_TCASE) },
@@ -21,10 +20,14 @@ defmodule D_TPLAN do
     ]
 
     recieve do
-      { :d_TDD, :done} -> List.delete(subscribed, :d_TDD)
-      { :d_FDD, :done} -> List.delete(subscribed, :d_FDD)
+      { :d_TDD, :done} -> 
+        List.delete(subscribed, :d_TDD)
+      { :d_FDD, :done} -> 
+        List.delete(subscribed, :d_FDD)
     end
-
+    if length(subscribed) > 0 do
+      d_TPLAN
+    end
+    mail(editors)
   end
-
 end
