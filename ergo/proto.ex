@@ -13,9 +13,16 @@ defmodule MR do
     ]
 
   defp d_TPLAN do
+    subscribed = [
+      :d_TDD,
+      :d_FDD
+    ]
+
     recieve do
-      { :d_TDD, :done} 
+      { :d_TDD, :done} -> List.delete(subscribed, :d_TDD)
+      { :d_FDD, :done} -> List.delete(subscribed, :d_FDD)
     end
 
   end
+
 end
