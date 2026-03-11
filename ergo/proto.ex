@@ -33,6 +33,6 @@ defmodule D_TPLAN do
     if length(subscribed) > 0 do
       d_TPLAN
     end
-    mail(editors)
+    Enum.list(editors) |> email(editors))
   end
 end
