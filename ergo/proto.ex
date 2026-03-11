@@ -18,6 +18,11 @@ defmodule D_TPLAN do
       :d_TDD,
       :d_FDD
     ]
+    editore = [
+      "user_BRD",
+      "user_TDD",
+      "user_FDD",
+    ]
 
     recieve do
       { :d_TDD, :done} -> 
