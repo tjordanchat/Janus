@@ -14,8 +14,6 @@ end
 
 defmodule D_TPLAN do
 
-  defp d_TPLAN do
-    
     subscribed = [
       :d_TDD,
       :d_FDD
@@ -27,6 +25,7 @@ defmodule D_TPLAN do
       "user_FDD",
     ]
 
+  defp d_TPLAN do
     recieve do
       { sub, :done} -> List.delete(subscribed, sub)
     end
@@ -37,4 +36,5 @@ defmodule D_TPLAN do
 
     Enum.list(editors) |> email(editors))
   end
+
 end
