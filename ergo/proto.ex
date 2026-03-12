@@ -25,13 +25,10 @@ defmodule D_TPLAN do
     ]
 
     recieve do
-      { :d_TDD, :done} -> 
-        List.delete(subscribed, :d_TDD)
-      { :d_FDD, :done} -> 
-        List.delete(subscribed, :d_FDD)
+      { sub, :done} -> List.delete(subscribed, sub)
     end
     if length(subscribed) > 0 do
-      d_TPLAN
+      d_TPLAN()
     end
     Enum.list(editors) |> email(editors))
   end
