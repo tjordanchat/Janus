@@ -27,7 +27,7 @@ defmodule D_TPLAN do
 
   defp d_TPLAN do
     recieve do
-      { sub, :done} -> List.delete(subscribed, sub)
+      message when is_atom(message) -> List.delete(subscribed, sub)
     end
 
     if length(subscribed) > 0 do
